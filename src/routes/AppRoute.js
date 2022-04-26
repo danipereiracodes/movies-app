@@ -20,6 +20,7 @@ const AppRoute = ({
 								movies={movies}
 								handleNewMovie={handleNewMovie}
 								setFavorite={setFavorite}
+								deleteMovie={deleteMovie}
 							/>
 						</>
 					}

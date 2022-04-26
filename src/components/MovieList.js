@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-const MovieList = ({ movies, setFavorite, handleNewMovie }) => {
+const MovieList = ({ deleteMovie, movies, setFavorite, handleNewMovie }) => {
 	/* const currentPage = movies.data.page;
 	const nextPage = currentPage + 1;
 	const prevPage = currentPage - 1;
@@ -17,6 +17,7 @@ const MovieList = ({ movies, setFavorite, handleNewMovie }) => {
 						cardData={m}
 						setFavorite={setFavorite}
 						handleNewMovie={handleNewMovie}
+						deleteMovie={deleteMovie}
 					/>
 				))
 			) : (

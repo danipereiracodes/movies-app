@@ -2,12 +2,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import nodisponible from "../../src/nodisponible.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 
 const Card = ({ cardData, deleteMovie }) => {
 	const IMG_URL = "http://image.tmdb.org/t/p/w500/";
-	const navigate = useNavigate();
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -51,7 +49,7 @@ const Card = ({ cardData, deleteMovie }) => {
 					>
 						Borrar
 					</button>
-					<ToastContainer onClick={() => navigate("/fav")} />
+					<ToastContainer />
 				</div>
 			</div>
 		</>

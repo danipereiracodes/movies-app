@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 const App = () => {
 	const URL = "https://api.themoviedb.org/3/";
 	const [movies, setMovies] = useState([]);
-	const [search, setSearch] = useState("a");
+	const [search, setSearch] = useState("");
 	const [favorite, setFavorite] = useState([]);
 
 	const handleNewMovie = (movie) => {
@@ -31,7 +31,7 @@ const App = () => {
 	};
 
 	useEffect(() => {
-		getMovies();
+		getTopMovies();
 	}, []);
 
 	const getMovies = async () => {
@@ -49,14 +49,28 @@ const App = () => {
 			.catch((error) => console.log(error));
 	};
 
+	const getTopMovies = async () => {
+		await axios
+			.get(`${URL}movie/top_rated`, {
+				params: {
+					api_key: process.env.REACT_APP_API_KEY,
+				},
+			})
+			.then((res) => {
+				const data = res;
+				setMovies(data.data.results);
+			})
+			.catch((error) => console.log(error));
+	};
+
 	const saveToLocalStorage = (elements) => {
 		localStorage.setItem("my-favorites", JSON.stringify(elements));
 	};
 
-	/* useEffect(() => {
+	useEffect(() => {
 		const favMovies = JSON.parse(localStorage.getItem("my-favorites"));
 		setFavorite(favMovies);
-	}, []); */
+	}, [favorite]);
 
 	return (
 		<>

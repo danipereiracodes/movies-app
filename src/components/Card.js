@@ -3,11 +3,13 @@ import nodisponible from "../../src/nodisponible.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 const Card = ({ cardData, handleNewMovie, deleteMovie }) => {
 	const IMG_URL = "http://image.tmdb.org/t/p/w500/";
 	const navigate = useNavigate();
+	const [isFav, setIsFav] = useState();
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -15,7 +17,7 @@ const Card = ({ cardData, handleNewMovie, deleteMovie }) => {
 
 	return (
 		<>
-			<div className="card" style={{ width: "18rem" }}>
+			<div className="card" style={{ margin: "10px 15px", width: "18rem" }}>
 				<img
 					src={
 						cardData.poster_path
@@ -41,15 +43,32 @@ const Card = ({ cardData, handleNewMovie, deleteMovie }) => {
 					>
 						{cardData.overview}
 					</p>
-					<button
-						onClick={() => {
-							handleNewMovie(cardData);
-							toast(`Añadido ${cardData.title} a favoritos!`);
-						}}
-						className="btn btn-primary"
-					>
-						Añadir a favoritos
-					</button>
+					{!isFav ? (
+						<button
+							onClick={() => {
+								handleNewMovie(cardData);
+								setIsFav(true);
+								toast(`Añadido ${cardData.title} a favoritos!`);
+							}}
+							className="btn btn-info"
+							style={{ color: "white" }}
+						>
+							<AiOutlineHeart /> Añadir
+						</button>
+					) : (
+						<button
+							onClick={() => {
+								setIsFav(false);
+								deleteMovie(cardData);
+								console.log("deleteMovie", deleteMovie);
+								toast(`Borrado ${cardData.title} de favoritos!`);
+							}}
+							className="btn btn-info"
+							style={{ color: "white" }}
+						>
+							<AiFillHeart /> Borrar
+						</button>
+					)}
 
 					<ToastContainer onClick={() => navigate("/fav")} />
 				</div>

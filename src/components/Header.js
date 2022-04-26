@@ -1,5 +1,6 @@
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Header = ({ handleSubmit, search, setSearch }) => {
 	return (
@@ -11,7 +12,7 @@ const Header = ({ handleSubmit, search, setSearch }) => {
 				alignItems: "center",
 			}}
 		>
-			<h1>Buscador de Películas</h1>
+			<h1 style={{ color: "white" }}>MOVIE APP</h1>
 			<SearchBar
 				handleSubmit={handleSubmit}
 				search={search}
@@ -20,16 +21,12 @@ const Header = ({ handleSubmit, search, setSearch }) => {
 			<div
 				style={{ display: "flex", margin: "1rem", justifyContent: "center" }}
 			>
-				<Link
-					to="/"
-					onClick={() => {
-						handleSubmit();
-						setSearch("a");
-					}}
-				>
+				<Link className="link-info" to="/">
 					Home
 				</Link>
-				<Link to="/fav">Favoritos</Link>
+				<Link className="link-info" to="/fav">
+					Favoritos
+				</Link>
 			</div>
 		</header>
 	);
