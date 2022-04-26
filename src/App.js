@@ -10,15 +10,14 @@ const App = () => {
 	const URL = "https://api.themoviedb.org/3/";
 	const [movies, setMovies] = useState([]);
 	const [search, setSearch] = useState("a");
-	const [favorite, setFavorite] = useState([
-		/* window.localStorage.getItem("favorite"), */
-	]);
+	const [favorite, setFavorite] = useState([]);
 
 	const handleNewMovie = (movie) => {
-		const favoriteMovies = [...favorite, movie];
-		setFavorite(favoriteMovies);
-		console.log("favorite movies", favoriteMovies);
-		saveToLocalStorage(favoriteMovies);
+		const favMovies = [...favorite, movie];
+		setFavorite(favMovies);
+		console.log([...favorite]);
+		saveToLocalStorage(favMovies);
+		console.log(favMovies);
 	};
 
 	const deleteMovie = (movie) => {
@@ -29,7 +28,6 @@ const App = () => {
 
 	const handleSubmit = (e) => {
 		getMovies();
-		console.log("movies", movies);
 	};
 
 	useEffect(() => {
@@ -55,10 +53,10 @@ const App = () => {
 		localStorage.setItem("my-favorites", JSON.stringify(elements));
 	};
 
-	useEffect(() => {
+	/* useEffect(() => {
 		const favMovies = JSON.parse(localStorage.getItem("my-favorites"));
 		setFavorite(favMovies);
-	}, []);
+	}, []); */
 
 	return (
 		<>
