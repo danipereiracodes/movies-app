@@ -12,7 +12,7 @@ const Header = ({ handleSubmit, search, setSearch }) => {
 				alignItems: "center",
 			}}
 		>
-			<h1 style={{ color: "white" }}>MOVIE APP</h1>
+			<h1>MOVIE APP</h1>
 			<SearchBar
 				handleSubmit={handleSubmit}
 				search={search}

@@ -9,7 +9,7 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 const Card = ({ cardData, handleNewMovie, deleteMovie }) => {
 	const IMG_URL = "http://image.tmdb.org/t/p/w500/";
 	const navigate = useNavigate();
-	const [isFav, setIsFav] = useState();
+	const [isFav, setIsFav] = useState(false);
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -60,7 +60,6 @@ const Card = ({ cardData, handleNewMovie, deleteMovie }) => {
 							onClick={() => {
 								setIsFav(false);
 								deleteMovie(cardData);
-								console.log("deleteMovie", deleteMovie);
 								toast(`Borrado ${cardData.title} de favoritos!`);
 							}}
 							className="btn btn-info"
