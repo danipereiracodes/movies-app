@@ -1,6 +1,6 @@
 const SearchBar = ({ search, setSearch, handleSubmit }) => {
 	return (
-		<div style={{ display: "flex", justifyContent: "center" }}>
+		<div ClassName="search-container">
 			<form
 				onSubmit={(e) => {
 					handleSubmit();

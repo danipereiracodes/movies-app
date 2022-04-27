@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import "../src/app.css";
 import Header from "./components/Header";
 import AppRoute from "./routes/AppRoute";
 import { StrictMode } from "react";
