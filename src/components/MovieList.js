@@ -1,5 +1,4 @@
 import Card from "./Card";
-import { useEffect } from "react";
 
 const MovieList = ({
 	favorite,
@@ -12,9 +11,6 @@ const MovieList = ({
 	const nextPage = currentPage + 1;
 	const prevPage = currentPage - 1;
 	const totalPages = movies.data.total_pages; */
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, []);
 
 	return (
 		<section className="movie-list-container">
