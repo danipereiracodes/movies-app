@@ -2,9 +2,7 @@ import FavCard from "./FavCard";
 
 const FavoriteList = ({ favorite, deleteMovie }) => {
 	return (
-		<div
-			style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
-		>
+		<section className="fav-list-container">
 			{favorite ? (
 				favorite.map((m) => (
 					<FavCard deleteMovie={deleteMovie} key={m.id} cardData={m} />
@@ -12,7 +10,7 @@ const FavoriteList = ({ favorite, deleteMovie }) => {
 			) : (
 				<p>No hay resultados</p>
 			)}
-		</div>
+		</section>
 	);
 };
 

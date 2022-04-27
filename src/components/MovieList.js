@@ -7,9 +7,7 @@ const MovieList = ({ deleteMovie, movies, setFavorite, handleNewMovie }) => {
 	const totalPages = movies.data.total_pages; */
 
 	return (
-		<div
-			style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
-		>
+		<section className="movie-list-container">
 			{movies ? (
 				movies.map((m) => (
 					<Card
@@ -23,7 +21,7 @@ const MovieList = ({ deleteMovie, movies, setFavorite, handleNewMovie }) => {
 			) : (
 				<p>No hay resultados</p>
 			)}
-		</div>
+		</section>
 	);
 };
 

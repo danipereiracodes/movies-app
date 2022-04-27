@@ -3,7 +3,7 @@ import nodisponible from "../../src/nodisponible.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React, { useEffect } from "react";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
 
 const Card = ({ cardData, deleteMovie }) => {
 	const IMG_URL = "http://image.tmdb.org/t/p/w500/";
@@ -14,7 +14,7 @@ const Card = ({ cardData, deleteMovie }) => {
 
 	return (
 		<>
-			<div className="card" style={{ width: "18rem" }}>
+			<div className="card">
 				<img
 					src={
 						cardData.poster_path

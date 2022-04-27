@@ -17,7 +17,7 @@ const Card = ({ cardData, handleNewMovie, deleteMovie }) => {
 
 	return (
 		<>
-			<div className="card" style={{ margin: "10px 15px", width: "18rem" }}>
+			<article className="card">
 				<img
 					src={
 						cardData.poster_path
@@ -27,10 +27,10 @@ const Card = ({ cardData, handleNewMovie, deleteMovie }) => {
 					alt="Imagen de película"
 				></img>
 
-				<div className="card-body">
-					<h5 style={{ minHeight: "60px" }} className="card-title">
+				<figure className="card-body">
+					<h2 style={{ minHeight: "60px" }} className="card-title">
 						{cardData.title}
-					</h5>
+					</h2>
 					<h6>{cardData.release_date}</h6>
 
 					<p
@@ -71,8 +71,8 @@ const Card = ({ cardData, handleNewMovie, deleteMovie }) => {
 					)}
 
 					<ToastContainer onClick={() => navigate("/fav")} />
-				</div>
-			</div>
+				</figure>
+			</article>
 		</>
 	);
 };

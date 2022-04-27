@@ -1,9 +1,5 @@
 const Footer = () => {
-	return (
-		<h4 style={{ display: "flex", justifyContent: "center" }}>
-			App creada por Dani Pereira
-		</h4>
-	);
+	return <p>App creada por Dani Pereira</p>;
 };
 
 export default Footer;
