@@ -1,10 +1,20 @@
 import Card from "./Card";
+import { useEffect } from "react";
 
-const MovieList = ({ deleteMovie, movies, setFavorite, handleNewMovie }) => {
+const MovieList = ({
+	favorite,
+	deleteMovie,
+	movies,
+	setFavorite,
+	handleNewMovie,
+}) => {
 	/* const currentPage = movies.data.page;
 	const nextPage = currentPage + 1;
 	const prevPage = currentPage - 1;
 	const totalPages = movies.data.total_pages; */
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<section className="movie-list-container">
@@ -16,6 +26,7 @@ const MovieList = ({ deleteMovie, movies, setFavorite, handleNewMovie }) => {
 						setFavorite={setFavorite}
 						handleNewMovie={handleNewMovie}
 						deleteMovie={deleteMovie}
+						favorite={favorite}
 					/>
 				))
 			) : (

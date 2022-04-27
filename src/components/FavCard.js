@@ -8,10 +8,6 @@ import { AiFillHeart } from "react-icons/ai";
 const Card = ({ cardData, deleteMovie }) => {
 	const IMG_URL = "http://image.tmdb.org/t/p/w500/";
 
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, []);
-
 	return (
 		<>
 			<div className="card">

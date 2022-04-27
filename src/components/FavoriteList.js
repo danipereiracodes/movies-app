@@ -1,11 +1,16 @@
-import FavCard from "./FavCard";
+import Card from "./Card";
 
 const FavoriteList = ({ favorite, deleteMovie }) => {
 	return (
 		<section className="fav-list-container">
-			{favorite ? (
+			{favorite.length > 0 ? (
 				favorite.map((m) => (
-					<FavCard deleteMovie={deleteMovie} key={m.id} cardData={m} />
+					<Card
+						favorite={favorite}
+						deleteMovie={deleteMovie}
+						key={m.id}
+						cardData={m}
+					/>
 				))
 			) : (
 				<p>No hay resultados</p>

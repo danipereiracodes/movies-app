@@ -4,7 +4,6 @@ import "../src/app.css";
 import Header from "./components/Header";
 import AppRoute from "./routes/AppRoute";
 import { StrictMode } from "react";
-import Footer from "./components/Footer";
 
 const App = () => {
 	const URL = "https://api.themoviedb.org/3/";
@@ -45,6 +44,7 @@ const App = () => {
 			.then((res) => {
 				const data = res;
 				setMovies(data.data.results);
+				console.log("movies", data.data.results);
 			})
 			.catch((error) => console.log(error));
 	};
@@ -76,11 +76,6 @@ const App = () => {
 		setFavorite(favMovies);
 	}, [favorite]);
 
-	const checkFav = JSON.parse(localStorage.getItem("my-favorites")).find(
-		(f) => f.id === favorite.id
-	);
-	console.log(checkFav);
-
 	return (
 		<>
 			<StrictMode>
@@ -96,7 +91,6 @@ const App = () => {
 					deleteMovie={deleteMovie}
 					favorite={favorite}
 				/>
-				<Footer />
 			</StrictMode>
 		</>
 	);

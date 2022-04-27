@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import FavoriteList from "../components/FavoriteList";
+import SingleMovie from "../pages/SingleMovie";
 
 const AppRoute = ({
 	deleteMovie,
@@ -21,6 +22,7 @@ const AppRoute = ({
 								handleNewMovie={handleNewMovie}
 								setFavorite={setFavorite}
 								deleteMovie={deleteMovie}
+								favorite={favorite}
 							/>
 						</>
 					}
@@ -30,6 +32,20 @@ const AppRoute = ({
 					element={
 						<>
 							<FavoriteList deleteMovie={deleteMovie} favorite={favorite} />
+						</>
+					}
+				/>
+				<Route
+					path="/movie/:id"
+					element={
+						<>
+							<SingleMovie
+								handleNewMovie={handleNewMovie}
+								setFavorite={setFavorite}
+								deleteMovie={deleteMovie}
+								favorite={favorite}
+								movies={movies}
+							/>
 						</>
 					}
 				/>
