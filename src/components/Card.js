@@ -49,6 +49,7 @@ const Card = ({ cardData, handleNewMovie, deleteMovie }) => {
 								handleNewMovie(cardData);
 								setIsFav(true);
 								toast(`Añadido ${cardData.title} a favoritos!`);
+								console.log(localStorage.getItem("my-favorites").length > 0);
 							}}
 							className="btn btn-info"
 							style={{ color: "white" }}

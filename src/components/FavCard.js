@@ -3,6 +3,7 @@ import nodisponible from "../../src/nodisponible.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React, { useEffect } from "react";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 const Card = ({ cardData, deleteMovie }) => {
 	const IMG_URL = "http://image.tmdb.org/t/p/w500/";
@@ -41,13 +42,14 @@ const Card = ({ cardData, deleteMovie }) => {
 					</p>
 
 					<button
-						className="btn btn-primary"
 						onClick={() => {
 							deleteMovie(cardData);
 							toast(`Borrado ${cardData.title} de favoritos!`);
 						}}
+						className="btn btn-info"
+						style={{ color: "white" }}
 					>
-						Borrar
+						<AiFillHeart /> Borrar
 					</button>
 					<ToastContainer />
 				</div>

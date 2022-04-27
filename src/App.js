@@ -68,10 +68,18 @@ const App = () => {
 	};
 
 	useEffect(() => {
-		localStorage.setItem("my-favorites", JSON.stringify(favorite));
+		if (localStorage.getItem("my-favorites") === null) {
+			localStorage.setItem("my-favorites", JSON.stringify(favorite));
+		}
+
 		const favMovies = JSON.parse(localStorage.getItem("my-favorites"));
 		setFavorite(favMovies);
 	}, [favorite]);
+
+	const checkFav = JSON.parse(localStorage.getItem("my-favorites")).find(
+		(f) => f.id === favorite.id
+	);
+	console.log(checkFav);
 
 	return (
 		<>
