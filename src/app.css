@@ -20,6 +20,21 @@ padding:2rem;
     width: 18rem;
 }
 
+.card-title {
+    min-height:60px;
+    font-size:1.5em;
+}
+
+.card-overview {
+    
+        overflow: hidden;
+        text-overflow: elipsis;
+        white-space: nowrap;
+    
+}
+
+
+
 ul  {
     display:flex;
 }
@@ -31,6 +46,10 @@ ul li {
 h1 {
     color:white;
 }
+
+
+
+
 header {
     display:flex;
     flex-direction:column;

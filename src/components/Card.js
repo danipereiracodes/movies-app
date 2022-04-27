@@ -27,22 +27,11 @@ const Card = ({ cardData, handleNewMovie, deleteMovie }) => {
 					alt="Imagen de película"
 				></img>
 
-				<figure className="card-body">
-					<h2 style={{ minHeight: "60px" }} className="card-title">
-						{cardData.title}
-					</h2>
-					<h6>{cardData.release_date}</h6>
+				<section className="card-body">
+					<h2 className="card-title">{cardData.title}</h2>
+					<date>{cardData.release_date}</date>
 
-					<p
-						style={{
-							overflow: "hidden",
-							textOverflow: "elipsis",
-							whiteSpace: "nowrap",
-						}}
-						className="card-text"
-					>
-						{cardData.overview}
-					</p>
+					<p className="card-text card-overview">{cardData.overview}</p>
 					{!isFav ? (
 						<button
 							onClick={() => {
@@ -52,7 +41,6 @@ const Card = ({ cardData, handleNewMovie, deleteMovie }) => {
 								console.log(localStorage.getItem("my-favorites").length > 0);
 							}}
 							className="btn btn-info"
-							style={{ color: "white" }}
 						>
 							<AiOutlineHeart /> Añadir
 						</button>
@@ -64,14 +52,13 @@ const Card = ({ cardData, handleNewMovie, deleteMovie }) => {
 								toast(`Borrado ${cardData.title} de favoritos!`);
 							}}
 							className="btn btn-info"
-							style={{ color: "white" }}
 						>
 							<AiFillHeart /> Borrar
 						</button>
 					)}
 
 					<ToastContainer onClick={() => navigate("/fav")} />
-				</figure>
+				</section>
 			</article>
 		</>
 	);

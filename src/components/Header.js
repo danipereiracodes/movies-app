@@ -13,7 +13,11 @@ const Header = ({ handleSubmit, search, setSearch }) => {
 			/>
 			<nav>
 				<ul>
-					<li>
+					<li
+						onClick={() => {
+							window.location.reload(true);
+						}}
+					>
 						<Link className="link-info" to="/">
 							Home
 						</Link>
