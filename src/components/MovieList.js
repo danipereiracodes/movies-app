@@ -1,4 +1,5 @@
 import Card from "./Card";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const MovieList = ({
 	favorite,
@@ -7,11 +8,6 @@ const MovieList = ({
 	setFavorite,
 	handleNewMovie,
 }) => {
-	/* const currentPage = movies.data.page;
-	const nextPage = currentPage + 1;
-	const prevPage = currentPage - 1;
-	const totalPages = movies.data.total_pages; */
-
 	return (
 		<section className="movie-list-container">
 			{movies ? (

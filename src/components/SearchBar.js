@@ -1,4 +1,4 @@
-const SearchBar = ({ search, setSearch, handleSubmit }) => {
+const SearchBar = ({ setSearch, handleSubmit }) => {
 	return (
 		<div className="search-container">
 			<form

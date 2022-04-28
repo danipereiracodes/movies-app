@@ -3,13 +3,12 @@ import nodisponible from "../../src/nodisponible.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 const Card = ({ favorite, cardData, handleNewMovie, deleteMovie }) => {
 	const IMG_URL = "http://image.tmdb.org/t/p/w500/";
 	const navigate = useNavigate();
-	const [isFav, setIsFav] = useState(false);
 
 	const filtered = favorite !== null ? favorite.map((f) => f.id) : [];
 
@@ -32,14 +31,13 @@ const Card = ({ favorite, cardData, handleNewMovie, deleteMovie }) => {
 
 				<section className="card-body">
 					<h2 className="card-title">{cardData.title}</h2>
-					<p>{cardData.release_date}</p>
+					<p>{cardData.release_date.split("/")}</p>
 
 					<p className="card-text card-overview">{cardData.overview}</p>
 					{!filtered.includes(cardData.id) ? (
 						<button
 							onClick={() => {
 								handleNewMovie(cardData);
-								setIsFav(true);
 								toast(`Añadido ${cardData.title} a favoritos!`);
 							}}
 							className="btn btn-info"
@@ -49,7 +47,6 @@ const Card = ({ favorite, cardData, handleNewMovie, deleteMovie }) => {
 					) : (
 						<button
 							onClick={() => {
-								setIsFav(false);
 								deleteMovie(cardData);
 								toast(`Borrado ${cardData.title} de favoritos!`);
 							}}

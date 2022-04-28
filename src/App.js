@@ -74,7 +74,7 @@ const App = () => {
 
 		const favMovies = JSON.parse(localStorage.getItem("my-favorites"));
 		setFavorite(favMovies);
-	}, [favorite]);
+	}, []);
 
 	return (
 		<>

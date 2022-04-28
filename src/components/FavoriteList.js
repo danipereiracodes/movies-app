@@ -13,7 +13,7 @@ const FavoriteList = ({ favorite, deleteMovie }) => {
 					/>
 				))
 			) : (
-				<p>No hay resultados</p>
+				<h2>No hay películas favoritas</h2>
 			)}
 		</section>
 	);
