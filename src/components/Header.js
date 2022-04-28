@@ -21,16 +21,6 @@ const Header = ({ handleSubmit, search, setSearch }) => {
 				/>
 				<nav>
 					<ul>
-						{/* <li
-						onClick={() => {
-							window.location.reload(true);
-						}}
-					>
-						<Link className="link-info" to="/">
-							Home
-						</Link>
-					</li> */}
-
 						<li>
 							<Link className="link-info" to="/fav">
 								Favoritos <AiFillHeart />
