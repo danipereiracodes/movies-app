@@ -36,7 +36,7 @@ const SingleMovie = ({ handleNewMovie, deleteMovie, favorite, movies }) => {
 			{movieInfo ? (
 				<article className="article-container">
 					<div className="single-movie-article-container">
-						<h2 id="single-movie-title">{movieInfo.title}</h2>
+						<h2 id="title">{movieInfo.title}</h2>
 						<img
 							src={`${IMG_URL}${movieInfo.poster_path}`}
 							alt={movieInfo.title}
