@@ -10,7 +10,7 @@ const MovieList = ({
 }) => {
 	return (
 		<section>
-			<h2>Las mejor votadas</h2>
+			<h2 id="title">Las mejor votadas</h2>
 			<article className="movie-list-container">
 				{movies && movies.length > 0 ? (
 					movies.map((m) => (
