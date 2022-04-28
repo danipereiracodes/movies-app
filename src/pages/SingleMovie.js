@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import nodisponible from "../nodisponible.jpg";
 
 const SingleMovie = ({ handleNewMovie, deleteMovie, favorite, movies }) => {
 	const { id } = useParams();
@@ -34,23 +35,35 @@ const SingleMovie = ({ handleNewMovie, deleteMovie, favorite, movies }) => {
 	return (
 		<section className="single-movie-container">
 			{movieInfo ? (
-				<article className="article-container">
-					<div className="single-movie-article-container">
-						<h2 id="title">{movieInfo.title}</h2>
-						<img
-							src={`${IMG_URL}${movieInfo.poster_path}`}
-							alt={movieInfo.title}
-						></img>
-					</div>
-					<div className="single-movie-info-container">
+				<article className="card card-single">
+					<img
+						className="card-image"
+						onClick={() => navigate(`/movie/${movieInfo.id}`)}
+						src={
+							movieInfo.poster_path
+								? `${IMG_URL}${movieInfo.poster_path}`
+								: nodisponible
+						}
+						alt="Imagen de película"
+					></img>
+
+					<section className="card-body">
+						<h2 className="card-title">{movieInfo.title}</h2>
 						<p>{movieInfo.overview}</p>
-						<ul style={{ listStyle: "none" }}>
-							<li>{movieInfo.rate}</li>
-							<li>{movieInfo.vote_average}</li>
-							<li>{movieInfo.original_title}</li>
-							<li>{movieInfo.original_language}</li>
-							<li>{movieInfo.status}</li>
+						<ul
+							style={{
+								listStyle: "none",
+								display: "flex",
+								flexDirection: "column",
+							}}
+						>
+							<li>Puntuación:{movieInfo.vote_average}</li>
+							<li>Título original:{movieInfo.original_title}</li>
+							<li>Lenguaje:{movieInfo.original_language}</li>
+							<li>Estado:{movieInfo.status}</li>
 						</ul>
+
+						<p className="card-text card-overview">{movieInfo.overview}</p>
 						{!filtered.includes(movieInfo.id) ? (
 							<button
 								onClick={() => {
@@ -59,7 +72,7 @@ const SingleMovie = ({ handleNewMovie, deleteMovie, favorite, movies }) => {
 								}}
 								className="btn btn-info"
 							>
-								Añadir <AiOutlineHeart />
+								<AiOutlineHeart /> Añadir
 							</button>
 						) : (
 							<button
@@ -69,13 +82,14 @@ const SingleMovie = ({ handleNewMovie, deleteMovie, favorite, movies }) => {
 								}}
 								className="btn btn-info"
 							>
-								Borrar <AiFillHeart />
+								<AiFillHeart /> Borrar
 							</button>
 						)}
-						<button onClick={() => navigate("/")} className="btn btn-info">
+						<button onClick={() => navigate(-1)} className="btn">
 							Volver
 						</button>
-					</div>
+						<ToastContainer onClick={() => navigate("/fav")} />
+					</section>
 				</article>
 			) : (
 				<h1>Cargando</h1>
