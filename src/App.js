@@ -26,7 +26,6 @@ const App = () => {
 	};
 
 	const handleSubmit = (e) => {
-		e.preventDefault();
 		getMovies();
 	};
 
