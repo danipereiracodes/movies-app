@@ -25,13 +25,11 @@ const SingleMovie = ({ handleNewMovie, deleteMovie, favorite, movies }) => {
 					const data = res;
 
 					setMovieInfo(data.data);
-					console.log("movies", movieInfo, "data", data.data);
 				})
 				.catch((error) => console.log(error));
 		};
 		getSingleMovie();
 	}, [movieInfo, id]);
-	console.log(movieInfo);
 
 	return (
 		<section className="single-movie-container">
