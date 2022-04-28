@@ -1,3 +1,5 @@
+import { AiOutlineSearch } from "react-icons/ai";
+
 const SearchBar = ({ setSearch, handleSubmit }) => {
 	return (
 		<div className="search-container">
@@ -13,8 +15,9 @@ const SearchBar = ({ setSearch, handleSubmit }) => {
 					onChange={(e) => {
 						setSearch(e.target.value);
 					}}
+					placeholder="Buscar películas..."
 				/>
-				<button type="submit">Buscar</button>
+				<AiOutlineSearch style={{ color: "white", fontSize: "1.5rem" }} />
 			</form>
 		</div>
 	);

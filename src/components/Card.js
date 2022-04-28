@@ -20,6 +20,7 @@ const Card = ({ favorite, cardData, handleNewMovie, deleteMovie }) => {
 		<>
 			<article className="card">
 				<img
+					className="card-image"
 					onClick={() => navigate(`/movie/${cardData.id}`)}
 					src={
 						cardData.poster_path
@@ -31,7 +32,7 @@ const Card = ({ favorite, cardData, handleNewMovie, deleteMovie }) => {
 
 				<section className="card-body">
 					<h2 className="card-title">{cardData.title}</h2>
-					<p>{cardData.release_date.split("/")}</p>
+					<p>{cardData.release_date}</p>
 
 					<p className="card-text card-overview">{cardData.overview}</p>
 					{!filtered.includes(cardData.id) ? (

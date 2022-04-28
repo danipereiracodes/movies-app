@@ -10,7 +10,7 @@ const MovieList = ({
 }) => {
 	return (
 		<section className="movie-list-container">
-			{movies ? (
+			{movies && movies.length > 0 ? (
 				movies.map((m) => (
 					<Card
 						key={m.id}
@@ -22,7 +22,7 @@ const MovieList = ({
 					/>
 				))
 			) : (
-				<p>No hay resultados</p>
+				<h2>No hay resultados</h2>
 			)}
 		</section>
 	);

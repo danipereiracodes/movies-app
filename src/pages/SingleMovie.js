@@ -31,41 +31,53 @@ const SingleMovie = ({ handleNewMovie, deleteMovie, favorite, movies }) => {
 		};
 		getSingleMovie();
 	}, [movieInfo, id]);
+	console.log(movieInfo);
 
 	return (
 		<section className="single-movie-container">
 			{movieInfo ? (
-				<article className="single-movie-article-container">
-					<h1 id="single-movie-title">{movieInfo.title}</h1>
-					<img
-						src={`${IMG_URL}${movieInfo.poster_path}`}
-						alt={movieInfo.title}
-					></img>
-					<p>{movieInfo.overview}</p>
-					{!filtered.includes(movieInfo.id) ? (
-						<button
-							onClick={() => {
-								handleNewMovie(movieInfo);
-								toast(`Añadido ${movieInfo.title} a favoritos!`);
-							}}
-							className="btn btn-info"
-						>
-							Añadir <AiOutlineHeart />
+				<article className="article-container">
+					<div className="single-movie-article-container">
+						<h1 id="single-movie-title">{movieInfo.title}</h1>
+						<img
+							src={`${IMG_URL}${movieInfo.poster_path}`}
+							alt={movieInfo.title}
+						></img>
+					</div>
+					<div className="single-movie-info-container">
+						<p>{movieInfo.overview}</p>
+						<ul style={{ listStyle: "none" }}>
+							<li>{movieInfo.rate}</li>
+							<li>{movieInfo.vote_average}</li>
+							<li>{movieInfo.original_title}</li>
+							<li>{movieInfo.original_language}</li>
+							<li>{movieInfo.status}</li>
+						</ul>
+						{!filtered.includes(movieInfo.id) ? (
+							<button
+								onClick={() => {
+									handleNewMovie(movieInfo);
+									toast(`Añadido ${movieInfo.title} a favoritos!`);
+								}}
+								className="btn btn-info"
+							>
+								Añadir <AiOutlineHeart />
+							</button>
+						) : (
+							<button
+								onClick={() => {
+									deleteMovie(movieInfo);
+									toast(`Borrado ${movieInfo.title} de favoritos!`);
+								}}
+								className="btn btn-info"
+							>
+								Borrar <AiFillHeart />
+							</button>
+						)}
+						<button onClick={() => navigate("/")} className="btn btn-info">
+							Volver
 						</button>
-					) : (
-						<button
-							onClick={() => {
-								deleteMovie(movieInfo);
-								toast(`Borrado ${movieInfo.title} de favoritos!`);
-							}}
-							className="btn btn-info"
-						>
-							Borrar <AiFillHeart />
-						</button>
-					)}
-					<button onClick={() => navigate("/")} className="btn btn-info">
-						Volver
-					</button>
+					</div>
 				</article>
 			) : (
 				<h1>Cargando</h1>
