@@ -6,7 +6,7 @@ En la terminal --->
 1 npm install
 2 npm start
 
-MOVIES APP es una mini-app que realicé como prueba técnica para la empresa EMAIS en la que a través de una API de cine debía pintar en pantalla un listado de películas con su información.
+MOVIES APP es una mini-app en la que a través de una API de cine debía pintar en pantalla un listado de películas con su información.
 
 Para crear la App utilicé la herramienta create react app por el poco tiempo y el tipo de app.
 
