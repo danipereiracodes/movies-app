@@ -1,31 +1,39 @@
-import React, { useState, useEffect } from "react";
+import * as React from 'react'
+
+import { useState, useEffect } from "react";
 import axios from "axios";
 import "../src/app.css";
 import Header from "./components/Header";
 import AppRoute from "./routes/AppRoute";
 import { StrictMode } from "react";
 
+interface AppState {
+	movies:[];
+	search:string;
+	favorite:[];
+	
+	
+}
+
 const App = () => {
 	const URL = "https://api.themoviedb.org/3/";
-	const [movies, setMovies] = useState([]);
-	const [search, setSearch] = useState("");
-	const [favorite, setFavorite] = useState([]);
+	const [movies, setMovies] = useState<Array<AppState>>([]);
+	const [search, setSearch] = useState<String>("");
+	const [favorite, setFavorite] = useState<Array<AppState>>([]);
 
-	const handleNewMovie = (movie) => {
-		const favMovies = [...favorite, movie];
+	const handleNewMovie = (movie:any) => {
+		const favMovies =  [...favorite, movie];
 		setFavorite(favMovies);
-		console.log([...favorite]);
 		saveToLocalStorage(favMovies);
-		console.log(favMovies);
 	};
 
-	const deleteMovie = (movie) => {
-		const favoriteMovies = favorite.filter((f) => f.id !== movie.id);
+	const deleteMovie = (movie:any) => {
+		const favoriteMovies = favorite.filter((f:any) => f.id !== movie.id);
 		setFavorite(favoriteMovies);
 		saveToLocalStorage(favoriteMovies);
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
 		getMovies();
 	};
 
@@ -44,7 +52,6 @@ const App = () => {
 			.then((res) => {
 				const data = res;
 				setMovies(data.data.results);
-				console.log("movies", data.data.results);
 			})
 			.catch((error) => console.log(error));
 	};
@@ -63,7 +70,7 @@ const App = () => {
 			.catch((error) => console.log(error));
 	};
 
-	const saveToLocalStorage = (elements) => {
+	const saveToLocalStorage = (elements:any) => {
 		localStorage.setItem("my-favorites", JSON.stringify(elements));
 	};
 
