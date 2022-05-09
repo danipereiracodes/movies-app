@@ -8,10 +8,11 @@ import AppRoute from "./routes/AppRoute";
 import { StrictMode } from "react";
 
 interface AppState {
-	movies:[];
-	search:string;
-	favorite:[];
 	
+	movies:Array<{}>;
+	favMovies:Array<{}>;
+	search:string;
+	setSearch: (search:string) => void;
 	
 }
 
@@ -19,26 +20,28 @@ const App = () => {
 	const URL = "https://api.themoviedb.org/3/";
 	const [movies, setMovies] = useState<Array<AppState>>([]);
 	const [search, setSearch] = useState<String>("");
-	const [favorite, setFavorite] = useState<Array<AppState>>([]);
+	const [favorite, setFavorite] = useState([]);
 
-	const handleNewMovie = (movie:any) => {
+	const handleNewMovie = (movie:Array<{}>) => {
 		const favMovies =  [...favorite, movie];
 		setFavorite(favMovies);
 		saveToLocalStorage(favMovies);
 	};
 
 	const deleteMovie = (movie:any) => {
-		const favoriteMovies = favorite.filter((f:any) => f.id !== movie.id);
+		const favoriteMovies = favorite.filter((f) => f.id !== movie.id);
 		setFavorite(favoriteMovies);
 		saveToLocalStorage(favoriteMovies);
 	};
 
 	const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
 		getMovies();
+		
 	};
 
 	useEffect(() => {
 		getTopMovies();
+
 	}, []);
 
 	const getMovies = async () => {
@@ -70,7 +73,7 @@ const App = () => {
 			.catch((error) => console.log(error));
 	};
 
-	const saveToLocalStorage = (elements:any) => {
+	const saveToLocalStorage = (elements:Array<{}>) => {
 		localStorage.setItem("my-favorites", JSON.stringify(elements));
 	};
 
