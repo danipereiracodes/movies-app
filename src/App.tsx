@@ -7,7 +7,7 @@ import Header from "./components/Header";
 import AppRoute from "./routes/AppRoute";
 import { StrictMode } from "react";
 import {moviesContext} from './context/MoviesContext'
-import { getMovies, getTopMovies } from './hooks/useMovies';
+import { getMovies, getTopMovies } from './helper/fetcher';
 
 interface AppTypes {
 	
@@ -20,8 +20,8 @@ interface AppTypes {
 }
 
 const App = () => {
-	const URL = "https://api.themoviedb.org/3/";
 
+	const URL = "https://api.themoviedb.org/3/";
 	const [movies, setMovies] = useState<Array<AppTypes>>([]);
 	const [search, setSearch] = useState<string>('');
 	const [favorite, setFavorite] = useState([]);
@@ -47,7 +47,6 @@ const App = () => {
 
 	}, []);
 
-	
 
 	const saveToLocalStorage = (elements:Array<{}>) => {
 		localStorage.setItem("my-favorites", JSON.stringify(elements));
