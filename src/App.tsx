@@ -6,20 +6,23 @@ import "../src/app.css";
 import Header from "./components/Header";
 import AppRoute from "./routes/AppRoute";
 import { StrictMode } from "react";
+import {moviesContext} from './context/MoviesContext'
 
-interface AppState {
+interface AppTypes {
 	
 	movies:Array<{}>;
 	favMovies:Array<{}>;
 	search:string;
 	setSearch: (search:string) => void;
+	handleNewMovie: (movie:Array<{}>) => void;
 	
 }
 
 const App = () => {
 	const URL = "https://api.themoviedb.org/3/";
-	const [movies, setMovies] = useState<Array<AppState>>([]);
-	const [search, setSearch] = useState<String>("");
+
+	const [movies, setMovies] = useState<Array<AppTypes>>([]);
+	const [search, setSearch] = useState('');
 	const [favorite, setFavorite] = useState([]);
 
 	const handleNewMovie = (movie:Array<{}>) => {
@@ -56,7 +59,10 @@ const App = () => {
 				const data = res;
 				setMovies(data.data.results);
 			})
-			.catch((error) => console.log(error));
+			.catch((error) => 
+			{
+				throw new Error(error);
+			})
 	};
 
 	const getTopMovies = async () => {
@@ -70,7 +76,11 @@ const App = () => {
 				const data = res;
 				setMovies(data.data.results);
 			})
-			.catch((error) => console.log(error));
+			.catch((error) => 
+			{
+				throw new Error(error);
+			})
+			
 	};
 
 	const saveToLocalStorage = (elements:Array<{}>) => {
@@ -88,20 +98,17 @@ const App = () => {
 
 	return (
 		<>
+		<moviesContext.Provider value={{search,setSearch, movies, setMovies, favorite, setFavorite, handleNewMovie, handleSubmit, deleteMovie}}>
 			<StrictMode>
 				<Header
-					handleSubmit={handleSubmit}
-					search={search}
-					setSearch={setSearch}
+					
+					
 				/>
 				<AppRoute
-					handleNewMovie={handleNewMovie}
-					setFavorite={setFavorite}
-					movies={movies}
-					deleteMovie={deleteMovie}
-					favorite={favorite}
+					
 				/>
 			</StrictMode>
+			</moviesContext.Provider>
 		</>
 	);
 };
