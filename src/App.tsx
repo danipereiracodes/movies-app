@@ -1,12 +1,13 @@
 import * as React from 'react'
 
 import { useState, useEffect } from "react";
-import axios from "axios";
+
 import "../src/app.css";
 import Header from "./components/Header";
 import AppRoute from "./routes/AppRoute";
 import { StrictMode } from "react";
 import {moviesContext} from './context/MoviesContext'
+import { getMovies, getTopMovies } from './hooks/useMovies';
 
 interface AppTypes {
 	
@@ -22,7 +23,7 @@ const App = () => {
 	const URL = "https://api.themoviedb.org/3/";
 
 	const [movies, setMovies] = useState<Array<AppTypes>>([]);
-	const [search, setSearch] = useState('');
+	const [search, setSearch] = useState<string>('');
 	const [favorite, setFavorite] = useState([]);
 
 	const handleNewMovie = (movie:Array<{}>) => {
@@ -38,50 +39,15 @@ const App = () => {
 	};
 
 	const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
-		getMovies();
-		
+		getMovies(search, URL, setMovies);
 	};
 
 	useEffect(() => {
-		getTopMovies();
+		getTopMovies(URL, setMovies);
 
 	}, []);
 
-	const getMovies = async () => {
-		await axios
-			.get(`${URL}search/movie`, {
-				params: {
-					api_key: process.env.REACT_APP_API_KEY,
-					query: search,
-				},
-			})
-			.then((res) => {
-				const data = res;
-				setMovies(data.data.results);
-			})
-			.catch((error) => 
-			{
-				throw new Error(error);
-			})
-	};
-
-	const getTopMovies = async () => {
-		await axios
-			.get(`${URL}movie/top_rated`, {
-				params: {
-					api_key: process.env.REACT_APP_API_KEY,
-				},
-			})
-			.then((res) => {
-				const data = res;
-				setMovies(data.data.results);
-			})
-			.catch((error) => 
-			{
-				throw new Error(error);
-			})
-			
-	};
+	
 
 	const saveToLocalStorage = (elements:Array<{}>) => {
 		localStorage.setItem("my-favorites", JSON.stringify(elements));
@@ -100,10 +66,7 @@ const App = () => {
 		<>
 		<moviesContext.Provider value={{search,setSearch, movies, setMovies, favorite, setFavorite, handleNewMovie, handleSubmit, deleteMovie}}>
 			<StrictMode>
-				<Header
-					
-					
-				/>
+				<Header/>
 				<AppRoute
 					
 				/>
