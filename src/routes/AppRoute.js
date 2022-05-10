@@ -3,13 +3,7 @@ import HomePage from "../pages/HomePage";
 import FavoriteList from "../components/FavoriteList";
 import SingleMovie from "../pages/SingleMovie";
 
-const AppRoute = ({
-	deleteMovie,
-	favorite,
-	movies,
-	handleNewMovie,
-	setFavorite,
-}) => {
+const AppRoute = () => {
 	return (
 		<div>
 			<Routes>
@@ -17,13 +11,7 @@ const AppRoute = ({
 					path="/"
 					element={
 						<>
-							<HomePage
-								movies={movies}
-								handleNewMovie={handleNewMovie}
-								setFavorite={setFavorite}
-								deleteMovie={deleteMovie}
-								favorite={favorite}
-							/>
+							<HomePage />
 						</>
 					}
 				/>
@@ -31,7 +19,7 @@ const AppRoute = ({
 					path="/fav"
 					element={
 						<>
-							<FavoriteList deleteMovie={deleteMovie} favorite={favorite} />
+							<FavoriteList />
 						</>
 					}
 				/>
@@ -39,13 +27,7 @@ const AppRoute = ({
 					path="/movie/:id"
 					element={
 						<>
-							<SingleMovie
-								handleNewMovie={handleNewMovie}
-								setFavorite={setFavorite}
-								deleteMovie={deleteMovie}
-								favorite={favorite}
-								movies={movies}
-							/>
+							<SingleMovie />
 						</>
 					}
 				/>

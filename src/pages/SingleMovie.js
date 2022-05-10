@@ -5,8 +5,11 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import nodisponible from "../nodisponible.jpg";
+import { useContext } from "react";
+import { moviesContext } from "../context/MoviesContext";
 
-const SingleMovie = ({ handleNewMovie, deleteMovie, favorite, movies }) => {
+const SingleMovie = () => {
+	const { handleNewMovie, deleteMovie, favorite } = useContext(moviesContext);
 	const { id } = useParams();
 	const URL = "https://api.themoviedb.org/3/"; // Pass .env
 	const IMG_URL = "http://image.tmdb.org/t/p/w500/"; //Pass .env
