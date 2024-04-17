@@ -12,7 +12,7 @@ export const getMovies = async (search, URL, setMovies) => {
 			setMovies(data.data.results);
 		})
 		.catch((error) => {
-			throw new Error(error);
+			console.error(error);
 		});
 };
 
@@ -28,6 +28,6 @@ export const getTopMovies = async (URL, setMovies) => {
 			setMovies(data.data.results);
 		})
 		.catch((error) => {
-			throw new Error(error);
+			console.error(error);
 		});
 };
