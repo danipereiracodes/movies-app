@@ -3,10 +3,12 @@ import nodisponible from "../../src/nodisponible.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { moviesContext } from "../context/MoviesContext";
 
-const Card = ({ favorite, cardData, handleNewMovie, deleteMovie }) => {
+const Card = ({ cardData }) => {
+	const { handleNewMovie, favorite, deleteMovie } = useContext(moviesContext);
 	const IMG_URL = "http://image.tmdb.org/t/p/w500/";
 	const navigate = useNavigate();
 

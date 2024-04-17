@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { GiPopcorn } from "react-icons/gi";
 import { AiFillHeart } from "react-icons/ai";
 
-const Header = ({ handleSubmit, search, setSearch }) => {
+const Header = () => {
 	return (
 		<header>
 			<section className="header-section">
@@ -14,11 +14,7 @@ const Header = ({ handleSubmit, search, setSearch }) => {
 						MOVIE APP
 					</h1>
 				</Link>
-				<SearchBar
-					handleSubmit={handleSubmit}
-					search={search}
-					setSearch={setSearch}
-				/>
+				<SearchBar />
 				<nav>
 					<ul>
 						<li>

@@ -1,5 +1,9 @@
 # movies-app
 
+## Prueba técnica realizada para puesto de Frontend Junior para empresa EMAIS
+
+## Documentación:
+
 Una vez descargada:
 
 En la terminal --->

@@ -1,12 +1,21 @@
 import { AiOutlineSearch } from "react-icons/ai";
+import { useContext } from "react";
+import { moviesContext } from "../context/MoviesContext";
 
-const SearchBar = ({ setSearch, handleSubmit }) => {
+const SearchBar = () => {
+	const { getMovies, setSearch, search, URL, setMovies } =
+		useContext(moviesContext);
+
+	const handleSubmit = () => {
+		getMovies(search, URL, setMovies);
+	};
+
 	return (
 		<div className="search-container">
 			<form
 				onChange={(e) => {
-					handleSubmit();
 					e.preventDefault();
+					handleSubmit();
 				}}
 			>
 				<input

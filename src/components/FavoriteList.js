@@ -1,6 +1,9 @@
 import Card from "./Card";
+import { useContext } from "react";
+import { moviesContext } from "../context/MoviesContext";
 
-const FavoriteList = ({ favorite, deleteMovie }) => {
+const FavoriteList = () => {
+	const { deleteMovie, favorite } = useContext(moviesContext);
 	return (
 		<section>
 			{favorite.length > 0 ? (
